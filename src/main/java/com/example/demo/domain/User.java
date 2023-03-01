@@ -1,11 +1,9 @@
 package com.example.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDateTime;
 
@@ -24,7 +22,7 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
 
-    @Length
+    @Length()
     @Column(name = "password")
     private String password;
 

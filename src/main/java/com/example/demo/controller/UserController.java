@@ -20,13 +20,11 @@ public class UserController {
     }
 
     @GetMapping("/users")
-//    @JsonView(Views.IdName.class)
     public List<User> getAll() {
         return userRepo.findAll();
     }
 
     @GetMapping("/users/{id}")
-//    @JsonView(Views.FullMessage.class)
     public User getOne(@PathVariable("id") User user) {
         return user;
     }
