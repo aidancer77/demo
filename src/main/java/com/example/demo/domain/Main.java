@@ -3,12 +3,12 @@ package com.example.demo.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "main_info")
-public class MainInfo {
+@Table(name = "main")
+public class Main {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(name = "duration")
     private String duration;
@@ -28,10 +28,15 @@ public class MainInfo {
     @Column(name = "carbohydrates")     //углеводы
     private String carbohydrates;
 
-    public MainInfo() {
-    }
+    @Column(name = "description")
+    private String description;
 
-    public MainInfo(Integer id, String duration, String complexity, String energyValue, String proteins, String fats, String carbohydrates) {
+    @Column(name = "dish_image")
+    private String dishImage;
+
+    public Main() { }
+
+    public Main(Long id, String duration, String complexity, String energyValue, String proteins, String fats, String carbohydrates, String description, String dishImage) {
         this.id = id;
         this.duration = duration;
         this.complexity = complexity;
@@ -39,20 +44,20 @@ public class MainInfo {
         this.proteins = proteins;
         this.fats = fats;
         this.carbohydrates = carbohydrates;
+        this.description = description;
+        this.dishImage = dishImage;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     public String getDuration() {
         return duration;
     }
-
     public void setDuration(String duration) {
         this.duration = duration;
     }
@@ -60,7 +65,6 @@ public class MainInfo {
     public String getComplexity() {
         return complexity;
     }
-
     public void setComplexity(String complexity) {
         this.complexity = complexity;
     }
@@ -68,7 +72,6 @@ public class MainInfo {
     public String getEnergyValue() {
         return energyValue;
     }
-
     public void setEnergyValue(String energyValue) {
         this.energyValue = energyValue;
     }
@@ -76,7 +79,6 @@ public class MainInfo {
     public String getProteins() {
         return proteins;
     }
-
     public void setProteins(String proteins) {
         this.proteins = proteins;
     }
@@ -84,7 +86,6 @@ public class MainInfo {
     public String getFats() {
         return fats;
     }
-
     public void setFats(String fats) {
         this.fats = fats;
     }
@@ -92,8 +93,13 @@ public class MainInfo {
     public String getCarbohydrates() {
         return carbohydrates;
     }
-
     public void setCarbohydrates(String carbohydrates) {
         this.carbohydrates = carbohydrates;
     }
+
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public String getDishImage() { return dishImage; }
+    public void setDishImage(String dishImage) { this.dishImage = dishImage; }
 }

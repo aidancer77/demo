@@ -15,8 +15,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "username")
+    private String userName;
 
     @Email
     @Column(name = "email", unique = true)
@@ -26,39 +26,41 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "sex")
-    private String sex;
+    @Column(name = "gender")
+    private String gender;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "day")
+    private int day;
+
+    @Column(name = "month")
+    private int month;
+
+    @Column(name = "year")
+    private int year;
 
     @Column(updatable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-//    @JsonView(Views.FullMessage.class)
     private LocalDateTime creationDate;
-
-    public User(Long id, String firstName, String email, String password, String sex, int age) {
-        this.id = id;
-        this.firstName = firstName;
-        this.email = email;
-        this.password = password;
-        this.sex = sex;
-        this.age = age;
-    }
 
     public User() { }
 
-    public String getSex() { return sex; }
-    public void setSex(String sex) { this.sex = sex; }
-
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
+    public User(Long id, String userName, String email, String password, String gender, int day, int month, int year, LocalDateTime creationDate) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.creationDate = creationDate;
+    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public String getUserName() { return userName; }
+    public void setUserName(String userName) { this.userName = userName; }
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
@@ -66,10 +68,18 @@ public class User {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
+
+    public int getDay() { return day; }
+    public void setDay(int day) { this.day = day; }
+
+    public int getMonth() { return month; }
+    public void setMonth(int month) { this.month = month; }
+
+    public int getYear() { return year; }
+    public void setYear(int year) { this.year = year; }
+
+    public LocalDateTime getCreationDate() { return creationDate; }
+    public void setCreationDate(LocalDateTime creationDate) { this.creationDate = creationDate; }
 }

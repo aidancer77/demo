@@ -3,27 +3,39 @@ package com.example.demo.domain;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "recipe")
+@Table(name = "recipes")
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
-    @Column(name = "action")
-    private String action;
+    @Column(name = "ingredients_id")
+    private Long ingredientsId;
+
+    @Column(name = "ingredient_quantity")
+    private Long ingredientQuantity;
+
+    @Column(name = "dishes_id")
+    private Long dishesId;
 
     public Recipe() { }
 
-    public Recipe(Integer id, String action) {
+    public Recipe(Long id, Long ingredientsId, Long ingredientQuantity, Long dishesId) {
         this.id = id;
-        this.action = action;
+        this.ingredientsId = ingredientsId;
+        this.ingredientQuantity = ingredientQuantity;
+        this.dishesId = dishesId;
     }
 
-    public Integer getId() { return id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Integer id) { this.id = id; }
+    public Long getIngredientsId() { return ingredientsId; }
+    public void setIngredientsId(Long ingredientsId) { this.ingredientsId = ingredientsId; }
 
-    public String getAction() { return action; }
+    public Long getIngredientQuantity() { return ingredientQuantity; }
+    public void setIngredientQuantity(Long ingredientQuantity) { this.ingredientQuantity = ingredientQuantity; }
 
-    public void setAction(String action) { this.action = action; }
+    public Long getDishesId() { return dishesId; }
+    public void setDishesId(Long dishesId) { this.dishesId = dishesId; }
 }
