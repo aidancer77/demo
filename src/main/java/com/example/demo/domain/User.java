@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -29,30 +30,23 @@ public class User {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "day")
-    private int day;
+    @Column(name = "date_of_birth")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date dateOfBirth;
 
-    @Column(name = "month")
-    private int month;
-
-    @Column(name = "year")
-    private int year;
-
-    @Column(updatable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime creationDate;
+    @Column(name = "creation_date", updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date creationDate;
 
     public User() { }
 
-    public User(Long id, String userName, String email, String password, String gender, int day, int month, int year, LocalDateTime creationDate) {
+    public User(Long id, String userName, String email, String password, String gender, Date dateOfBirth, Date creationDate) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.gender = gender;
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        this.dateOfBirth = dateOfBirth;
         this.creationDate = creationDate;
     }
 
@@ -71,15 +65,9 @@ public class User {
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
 
-    public int getDay() { return day; }
-    public void setDay(int day) { this.day = day; }
+    public Date getDateOfBirth() { return dateOfBirth; }
+    public void setDateOfBirth(Date dateOfBirth) { this.dateOfBirth = dateOfBirth; }
 
-    public int getMonth() { return month; }
-    public void setMonth(int month) { this.month = month; }
-
-    public int getYear() { return year; }
-    public void setYear(int year) { this.year = year; }
-
-    public LocalDateTime getCreationDate() { return creationDate; }
-    public void setCreationDate(LocalDateTime creationDate) { this.creationDate = creationDate; }
+    public Date getCreationDate() { return creationDate; }
+    public void setCreationDate(Date creationDate) { this.creationDate = creationDate; }
 }

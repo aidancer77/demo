@@ -1,6 +1,9 @@
 package com.example.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
@@ -10,11 +13,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "order_date")
-    private String orderDate;
+    @Column(name = "order_date", updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDateTime orderDate;
 
-    @Column(name = "dishes_date")
-    private String dishesDate;
+    @Column(name = "dishes_date", updatable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDateTime dishesDate;
 
     @Column(name = "users_id")
     private String usersId;
@@ -27,7 +32,7 @@ public class Order {
 
     public Order() { }
 
-    public Order(Long id, String orderDate, String dishesDate, String usersId, String dishesId, String mealsId) {
+    public Order(Long id, LocalDateTime orderDate, LocalDateTime dishesDate, String usersId, String dishesId, String mealsId) {
         this.id = id;
         this.orderDate = orderDate;
         this.dishesDate = dishesDate;
@@ -39,11 +44,11 @@ public class Order {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getOrderDate() { return orderDate; }
-    public void setOrderDate(String orderDate) { this.orderDate = orderDate; }
+    public LocalDateTime getOrderDate() { return orderDate; }
+    public void setOrderDate(LocalDateTime orderDate) { this.orderDate = orderDate; }
 
-    public String getDishesDate() { return dishesDate; }
-    public void setDishesDate(String dishesDate) { this.dishesDate = dishesDate; }
+    public LocalDateTime getDishesDate() { return dishesDate; }
+    public void setDishesDate(LocalDateTime dishesDate) { this.dishesDate = dishesDate; }
 
     public String getUsersId() { return usersId; }
     public void setUsersId(String userId) { this.usersId = userId; }
